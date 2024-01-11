@@ -22,12 +22,12 @@ export class NotesController {
   // Filter by Id
   @Get(':id')
   findOneById(@Param('id', ParseIntPipe) id) {
-    return this.notesService.findOne(id);
+    return this.notesService.findOneById(id);
   }
   // Filter by tag
   @Get('tag/:tag')
   findOneByTag(@Param('tag', ParseIntPipe) tag) {
-    return this.notesService.findOne(tag);
+    return this.notesService.findOneByTag(tag);
   }
   // Make a note
   @Post() create(@Body() note: Note) {
