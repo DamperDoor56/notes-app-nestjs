@@ -14,16 +14,25 @@ export class NotesService {
     return await this.notesRepository.find();
   }
   // Retrieves a single note by its ID
-  findOneById(id: string): Promise<Note> {
-    return this.notesRepository.findOne(id as FindOneOptions);
+  async findOneById(id: string): Promise<Note> {
+    const note = await this.notesRepository.findOne(id);
+    if (!note) {
+      throw new NotFoundException('Note not found! Try another id');
+    }
+    return note;
   }
-  // Retrieves a single note by its tag
-  findOneByTag(tag: string): Promise<Note> {
-    return this.notesRepository.findOne(tag as FindOneOptions);
+  // Retrieves multiple notes by their tag
+  async findOneByTag(tag: string): Promise<Note[]> {
+    const notes = await this.notesRepository.find({ where: { tag } });
+    if (notes.length === 0) {
+      // if the array comes empty, then not found
+      throw new NotFoundException(`Note with tag '${tag}' not found`);
+    }
+    return notes;
   }
   // Saves a new note
   async createNote(note: Note) {
-    this.notesRepository.save(note);
+    return this.notesRepository.save(note);
   }
   // Deletes a note
   async remove(id: string): Promise<void> {
