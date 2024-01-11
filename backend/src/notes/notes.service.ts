@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { FindOneOptions, Repository } from 'typeorm';
+import { FindConditions, FindOneOptions, ILike, Repository } from 'typeorm';
 import { Note } from './notes.entity';
 
 // It's injectable because of notesRepository dependency
@@ -12,6 +12,21 @@ export class NotesService {
   // Retrieves all notes from the database
   async getNotes(): Promise<Note[]> {
     return await this.notesRepository.find();
+  }
+  // Retrieves multiple notes by its title or description
+  async findByTitleOrDescription(query: string): Promise<Note[]> {
+    const conditions: FindConditions<Note> = {};
+    // Case-insensitive search
+    conditions.title = ILike(`%${query}%`);
+    conditions.description = ILike(`%${query}%`);
+
+    const note = await this.notesRepository.find({ where: conditions });
+    if (!note) {
+      throw new NotFoundException(
+        `Note not found with title or description containing '${query}'`,
+      );
+    }
+    return note;
   }
   // Retrieves a single note by its ID
   async findOneById(id: string): Promise<Note> {
