@@ -9,6 +9,6 @@ export const config: TypeOrmModuleOptions = {
   username: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASSWORD,
   database: 'notes_database',
-  entities: ['dist/**/*.entity{.ts}'],
+  entities: ['dist/**/*.entity{.ts,.js}'],
   synchronize: true,
 };
