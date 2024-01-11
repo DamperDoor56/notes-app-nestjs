@@ -1,6 +1,6 @@
 {
   "name": "backend",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "The backend app for a simple Notes App",
   "author": "Ludmila Rocio Lopez",
   "private": true,
@@ -30,7 +30,7 @@
     "pg": "^8.11.3",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",
-    "typeorm": "^0.3.19"
+    "typeorm": "0.2.45"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
