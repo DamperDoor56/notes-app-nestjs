@@ -1,4 +1,4 @@
-import { Notes, NotesGridProps } from "@/app/types/notes-grid"
+import { Notes, NotesGridProps } from "@/app/types/notes";
 import { Note } from "../note"
 
 export const NotesGrid = ({ notes, isLoading }: NotesGridProps) => {
