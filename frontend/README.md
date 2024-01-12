@@ -1,50 +1,46 @@
-# note-app-backend
+# note-app front-end
 
 <p align="center" style="display: flex, ">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="100" alt="Nest Logo" /></a>
-  <a href="https://www.mysql.com/" target="blank"><img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" width="100" alt="MySQL Logo" /></a>
+  <a href="https://nextjs.org/" target="blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/archive/8/8e/20230404233502%21Nextjs-logo.svg/120px-Nextjs-logo.svg.png" width="100" alt="NextJS logo" /></a>
+  <a href="https://tailwindcss.com" target="blank"><img src="https://tailwindcss.com/_next/static/media/tailwindcss-mark.3c5441fc7a190fb1800d4a5c7f07ba4b1345a9c8.svg" width="100" alt="PostgreSQL Logo" /></a>
   <a href="https://jestjs.io/" target="blank"><img src="https://icon.icepanel.io/Technology/svg/Jest.svg" width="80" alt="Jest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Description 
+It's a simple notes app application.
+It's made with NextJS, Tailwind, and Jest for testing. 
 
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+### Features
+ - Create, delete and update notes. 
+ - Filter notes by content of their notes.
+ - Filter by tag.
 
-## Description
 
-This is the back-end application of the notes-app.
-It's made with NestJS, TypeScript, Jest for testing and MySQL.
-
-## Installation
-
-```bash
-$ yarn install
+## Prerequisites
+```
+typescript: ^5,
+node: ^20,
+yarn: ^1.22.x
 ```
 
-## Running the app
-
+## Getting Started
 ```bash
-# development
-$ yarn run start
+git clone https://github.com/ensolvers-github-challenges/Lopez-ad34a8.git
 
-# watch mode
-$ yarn run start:dev
+cd frontend
 
-# production mode
-$ yarn run start:prod
+yarn dev
 ```
 
-## Test
 
-```bash
-# unit tests
-$ yarn run test
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-# e2e tests
-$ yarn run test:e2e
+## Learn More
 
-# test coverage
-$ yarn run test:cov
-```
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
