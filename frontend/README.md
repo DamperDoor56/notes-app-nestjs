@@ -16,10 +16,11 @@ It's made with NextJS, Tailwind, and Jest for testing.
  - Filter by tag.
 
 
-## Requirements
+## Prerequisites
 ```
 typescript: ^5,
 node: ^20,
+yarn: ^1.22.x
 ```
 
 ## Getting Started
