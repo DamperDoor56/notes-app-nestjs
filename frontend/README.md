@@ -19,7 +19,7 @@ It's made with NextJS, Tailwind, and Jest for testing.
 ## Prerequisites
 ```
 typescript: ^5,
-node: ^20,
+node: >=18.17.0,
 yarn: ^1.22.x
 ```
 

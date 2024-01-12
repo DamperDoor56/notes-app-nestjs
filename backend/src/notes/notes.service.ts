@@ -42,13 +42,17 @@ export class NotesService {
     return note;
   }
   // Retrieves multiple notes by their tag
-  async findOneByTag(tag: string): Promise<Note[]> {
+  async findOneByTag(tag: string): Promise<PromiseTypes> {
     const notes = await this.notesRepository.find({ where: { tag } });
     if (notes.length === 0) {
       // if the array comes empty, then not found
       throw new NotFoundException(`Note with tag '${tag}' not found`);
     }
-    return notes;
+    return {
+      status: 200,
+      message: 'Notes retrieved successfully!',
+      data: notes,
+    };
   }
   // Saves a new note
   async createNote(note: Note) {
