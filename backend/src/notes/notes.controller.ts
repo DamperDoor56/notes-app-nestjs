@@ -35,25 +35,24 @@ export class NotesController {
       data: notes,
     };
   }
-  // Filter by Id
-  @Get(':id')
-  findOneById(@Param('id', ParseIntPipe) id) {
-    return this.notesService.findOneById(id);
-  }
   @Get('title-or-description/:titleOrDescription')
   async findOneByTitleOrDescription(
     @Param('titleOrDescription') titleOrDescription: string,
   ) {
     try {
-      const note =
+      const notes =
         await this.notesService.findByTitleOrDescription(titleOrDescription);
-      if (note.length === 0) {
+      if (notes.length === 0) {
         // Note not found
         throw new NotFoundException(
           `Note not found with title or description '${titleOrDescription}'`,
         );
       }
-      return note;
+      return {
+        status: 200,
+        message: 'Notes retrieved successfully!',
+        data: notes,
+      };
     } catch (error) {
       // Other errors
       throw error; // Re-throw other errors for global exception handling
