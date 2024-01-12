@@ -24,6 +24,17 @@ export class NotesController {
     // add length too
     return { data: notes, length: notes.length };
   }
+  // Retrieve all notes based on archive status
+  @Get('archive/:archive')
+  async getNotesByArchiveStatus(@Param('archive') archive: boolean) {
+    const notes = await this.notesService.getNotesByArchive(archive);
+
+    return {
+      status: 200,
+      message: 'Notes retrieved successfully!',
+      data: notes,
+    };
+  }
   // Filter by Id
   @Get(':id')
   findOneById(@Param('id', ParseIntPipe) id) {
@@ -48,11 +59,18 @@ export class NotesController {
       throw error; // Re-throw other errors for global exception handling
     }
   }
-
   // Filter by tag
   @Get('tag/:tag')
   findOneByTag(@Param('tag') tag: string) {
     return this.notesService.findOneByTag(tag);
+  }
+  // Archive or unarchive a note
+  @Put(':id/archive/:archive')
+  async archiveNote(
+    @Param('id') noteId: number,
+    @Param('archive') archive: boolean,
+  ) {
+    return this.notesService.archiveNote(noteId, archive);
   }
   // Make a note
   @Post()

@@ -1,4 +1,5 @@
-import { IsString, MaxLength, MinLength } from 'class-validator';
+import { Transform } from 'class-transformer';
+import { IsBoolean, IsString, MaxLength, MinLength } from 'class-validator';
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 // An entity is a class that maps to a database table
@@ -23,4 +24,9 @@ export class Note extends BaseEntity {
   @MinLength(1)
   @IsString()
   description: string;
+  // Archived
+  @Column({ default: false, type: 'boolean' })
+  @Transform(({ value }) => value === 'true')
+  @IsBoolean()
+  archived: boolean;
 }

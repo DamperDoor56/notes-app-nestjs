@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FindConditions, FindOneOptions, ILike, Repository } from 'typeorm';
 import { Note } from './notes.entity';
+import { PromiseTypes } from './types';
 
 // It's injectable because of notesRepository dependency
 @Injectable()
@@ -12,6 +13,10 @@ export class NotesService {
   // Retrieves all notes from the database
   async getNotes(): Promise<Note[]> {
     return await this.notesRepository.find();
+  }
+  // Retrieves all notes based on the archive status
+  async getNotesByArchive(archive: boolean): Promise<Note[]> {
+    return this.notesRepository.find({ where: { archived: archive } });
   }
   // Retrieves multiple notes by its title or description
   async findByTitleOrDescription(query: string): Promise<Note[]> {
@@ -49,6 +54,23 @@ export class NotesService {
   async createNote(note: Note) {
     return this.notesRepository.save(note);
   }
+
+  // Archives a note
+  async archiveNote(noteId: number, archive: boolean): Promise<PromiseTypes> {
+    const note = await this.notesRepository.findOne(noteId);
+    if (!note) {
+      throw new NotFoundException('Note not found');
+    }
+    note.archived = archive;
+    const editedNote = await note.save();
+    // Convert boolean to true boolean for consistent JSON serialization
+    return {
+      status: 200,
+      message: 'Changes made successfully',
+      data: editedNote,
+    };
+  }
+
   // Deletes a note
   async remove(id: string): Promise<void> {
     await this.notesRepository.delete(id);
