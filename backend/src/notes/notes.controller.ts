@@ -48,11 +48,18 @@ export class NotesController {
       throw error; // Re-throw other errors for global exception handling
     }
   }
-
   // Filter by tag
   @Get('tag/:tag')
   findOneByTag(@Param('tag') tag: string) {
     return this.notesService.findOneByTag(tag);
+  }
+  // Archive or unarchive a note
+  @Put(':id/archive/:archive')
+  async archiveNote(
+    @Param('id') noteId: number,
+    @Param('archive') archive: boolean,
+  ) {
+    return this.notesService.archiveNote(noteId, archive);
   }
   // Make a note
   @Post()
