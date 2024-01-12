@@ -5,7 +5,6 @@ export const options: Option[] = [
     { value: 'Select', label: 'Select' },
     { value: 'Tag', label: 'Tag' },
     { value: 'Content', label: 'Content' },
-    { value: 'ID', label: 'ID' },
   ];
 
 // Select styles 
