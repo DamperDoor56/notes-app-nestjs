@@ -14,6 +14,10 @@ export class NotesService {
   async getNotes(): Promise<Note[]> {
     return await this.notesRepository.find();
   }
+  // Retrieves all notes based on the archive status
+  async getNotesByArchive(archive: boolean): Promise<Note[]> {
+    return this.notesRepository.find({ where: { archived: archive } });
+  }
   // Retrieves multiple notes by its title or description
   async findByTitleOrDescription(query: string): Promise<Note[]> {
     const conditions: FindConditions<Note> = {};

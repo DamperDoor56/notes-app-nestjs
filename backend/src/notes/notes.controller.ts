@@ -24,6 +24,17 @@ export class NotesController {
     // add length too
     return { data: notes, length: notes.length };
   }
+  // Retrieve all notes based on archive status
+  @Get('archive/:archive')
+  async getNotesByArchiveStatus(@Param('archive') archive: boolean) {
+    const notes = await this.notesService.getNotesByArchive(archive);
+
+    return {
+      status: 200,
+      message: 'Notes retrieved successfully!',
+      data: notes,
+    };
+  }
   // Filter by Id
   @Get(':id')
   findOneById(@Param('id', ParseIntPipe) id) {
