@@ -7,7 +7,7 @@ import { options, selectStyles } from "@/app/utils/navbar"
 import { NavbarProps } from "@/app/types/navbar";
 import { useEffect, useState } from "react";
 
-export const Navbar = ({setInputContent, selectedOption} : NavbarProps) => {
+export const Navbar = ({setInputContent, selectedOption, setSelectedOption} : NavbarProps) => {
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
 	// This is a workaround for a console error related to latest nextjs version
@@ -29,7 +29,9 @@ return (
         <div className="flex flex-row gap-3 items-center">
         <p className="text-brick-gray fill-brick-gray">By:</p>
         {isMounted ? (
-	        <Select options={options} value={selectedOption} className="w-40" />	) : null}
+	        <Select options={options} value={selectedOption} 
+          onChange={(e) => setSelectedOption({value: e?.value, label: e?.value})} 
+          className="w-40" />	) : null}
         </div>
         <button>   
         <Magnifier className="fill-brick-gray w-10" width={20} />

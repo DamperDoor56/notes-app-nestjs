@@ -5,3 +5,10 @@ export type ModalProp = {
     description?: string;
     onConfirm: Function
 }
+
+export type CreateForm = {
+    isOpen: boolean,
+    handleClose: Function,
+    update?: boolean
+    id?:  number | null; 
+}

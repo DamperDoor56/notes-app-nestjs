@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Navbar } from "./components/navbar";
 import { useGetAllNotes, useGetNotesByTag, useGetNotesByTitleOrDesc } from "./api/notes/get";
 import { Option } from "./types/navbar";
@@ -32,7 +32,7 @@ export default function Home() {
 
   return (
     <main>
-      <Navbar selectedOption={selectedOption} setInputContent={setInputContent}/>
+      <Navbar setSelectedOption={setSelectedOption} selectedOption={selectedOption} setInputContent={setInputContent}/>
       <AddNewNote />
       <NotesGrid notes={displayedNotes?.data} isLoading={displayedLoading}  />
       <ToastContainer />

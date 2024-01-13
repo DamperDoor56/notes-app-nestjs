@@ -4,6 +4,7 @@ export interface Option {
   }
 
   export type NavbarProps = {
+    setSelectedOption: Function,
     setInputContent: Function,
     selectedOption: Option;
   }

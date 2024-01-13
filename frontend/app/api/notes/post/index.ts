@@ -1,7 +1,7 @@
 import { Notes } from '@/app/types/notes';
 import { mutate } from 'swr';
 
-const host = process.env.NEXT_PUBLIC_API_HOST;
+export const host = process.env.NEXT_PUBLIC_API_HOST;
 
 export const useCreateNote = () => {
   const createNote = async (newNote: Notes) => {
