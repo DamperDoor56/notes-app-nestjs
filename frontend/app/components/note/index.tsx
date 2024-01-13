@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 import { ConfirmationModal } from '../modal';
 import { CreateNoteForm } from '../new-note-form';
 import Pencil from '@/public/note-icon/pencil';
-import { useGetNotesById } from '@/app/api/notes/get';
 
 export const Note = ({ note }: { note: Notes }) => {
   const { archiveNote } = useArchiveNote();
@@ -16,7 +15,6 @@ export const Note = ({ note }: { note: Notes }) => {
   const [showFormModal, setShowFormModal] = useState<boolean>(false);
   const [showEditModal, setShowEditModal] = useState<boolean>(false);
  
-
   const condition = !!note?.archived;
 
   const handleArchive =  (isArchiving: boolean) => {
