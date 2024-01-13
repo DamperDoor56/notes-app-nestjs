@@ -24,7 +24,7 @@ export function getDisplayedNotes({selectedOption, notes , tagNotes, allNotes}: 
   }  
 
   // conditionals 
-  export function AllCondition({selectedOption, inputContent}: Conditional){
+  export function AllCondition({selectedOption, inputContent}: Conditional) {
     return (
       selectedOption.value === 'Select' || selectedOption.value === 'Tag' && inputContent === ''
     )
