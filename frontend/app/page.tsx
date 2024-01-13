@@ -6,6 +6,9 @@ import { useGetAllNotes, useGetNotesByTag, useGetNotesByTitleOrDesc } from "./ap
 import { Option } from "./types/navbar";
 import { NotesGrid } from "./components/notes";
 import { AllCondition, ContentCondition, TagCondition, getDisplayedLoading, getDisplayedNotes } from "./utils/notes";
+import { AddNewNote } from "./components/new-note";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home() {
   // States
@@ -29,8 +32,10 @@ export default function Home() {
 
   return (
     <main>
-      <Navbar selectedOption={selectedOption} setInputContent={setInputContent} setSelectedOption={setSelectedOption} />
+      <Navbar selectedOption={selectedOption} setInputContent={setInputContent}/>
+      <AddNewNote />
       <NotesGrid notes={displayedNotes?.data} isLoading={displayedLoading}  />
+      <ToastContainer />
     </main>
   )
 }
