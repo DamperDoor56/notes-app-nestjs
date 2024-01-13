@@ -13,7 +13,8 @@ const config: Config = {
         'dark-green': "#283618",
         'light-yellow': '#fefae0',
         'white-yellow': '#d7d7b6',
-        'brick-gray': '#939878'
+        'brick-gray': '#939878',
+        'brick-orange': '#dda15e'
       },
 
     },
