@@ -29,30 +29,52 @@ export class NotesController {
   findOneById(@Param('id', ParseIntPipe) id) {
     return this.notesService.findOneById(id);
   }
+  // Retrieve all notes based on archive status
+  @Get('archive/:archive')
+  async getNotesByArchiveStatus(@Param('archive') archive: boolean) {
+    const notes = await this.notesService.getNotesByArchive(archive);
+
+    return {
+      status: 200,
+      message: 'Notes retrieved successfully!',
+      data: notes,
+    };
+  }
   @Get('title-or-description/:titleOrDescription')
   async findOneByTitleOrDescription(
     @Param('titleOrDescription') titleOrDescription: string,
   ) {
     try {
-      const note =
+      const notes =
         await this.notesService.findByTitleOrDescription(titleOrDescription);
-      if (note.length === 0) {
+      if (notes.length === 0) {
         // Note not found
         throw new NotFoundException(
           `Note not found with title or description '${titleOrDescription}'`,
         );
       }
-      return note;
+      return {
+        status: 200,
+        message: 'Notes retrieved successfully!',
+        data: notes,
+      };
     } catch (error) {
       // Other errors
       throw error; // Re-throw other errors for global exception handling
     }
   }
-
   // Filter by tag
   @Get('tag/:tag')
   findOneByTag(@Param('tag') tag: string) {
     return this.notesService.findOneByTag(tag);
+  }
+  // Archive or unarchive a note
+  @Put(':id/archive/:archive')
+  async archiveNote(
+    @Param('id') noteId: number,
+    @Param('archive') archive: boolean,
+  ) {
+    return this.notesService.archiveNote(noteId, archive);
   }
   // Make a note
   @Post()
