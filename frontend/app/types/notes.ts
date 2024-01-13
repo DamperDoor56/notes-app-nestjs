@@ -10,7 +10,7 @@ export type NotesGridProps = {
     title: string,
     tag: string,
     description: string,
-    archived:boolean
+    archived: boolean
   }
 
   export interface NotesResponse {
@@ -33,5 +33,8 @@ export type NotesGridProps = {
   };
 
   export type Conditional = NoteHelper & {
-    inputContent: string
+    inputContent: string,
     };
+
+  
+    

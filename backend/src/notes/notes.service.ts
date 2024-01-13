@@ -12,7 +12,11 @@ export class NotesService {
   ) {}
   // Retrieves all notes from the database
   async getNotes(): Promise<Note[]> {
-    return await this.notesRepository.find();
+    return await this.notesRepository.find({
+      order: {
+        id: 'DESC',
+      },
+    });
   }
   // Retrieves all notes based on the archive status
   async getNotesByArchive(archive: boolean): Promise<Note[]> {
